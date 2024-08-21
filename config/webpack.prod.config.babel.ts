@@ -11,7 +11,6 @@ export default {
     react: "React",
     axios: "axios",
     "react-redux": "ReactRedux",
-    "pixi.js": "PIXI",
     "redux-persist": "ReduxPersist",
   },
   module: {
@@ -66,7 +65,7 @@ export default {
         parallel: 12,
       }),
       new CompressPlugin({
-        filename: "[name].gz[query]",
+        filename: "[name].[ext].gz[query]",
         minRatio: 0.8,
         threshold: 10240, // 大于10kb的才被压缩
         compressionOptions: {},

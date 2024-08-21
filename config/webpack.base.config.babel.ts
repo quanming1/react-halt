@@ -4,9 +4,10 @@ import TsPathPlugin from "tsconfig-paths-webpack-plugin";
 import DotEnv from "dotenv-webpack";
 import { Configuration } from "webpack";
 import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
+import CopyWebpackPlugin from "copy-webpack-plugin";
+import path from "path";
 
 const currentEnv = process.env.NODE_ENV as Configuration["mode"];
-
 const config: Configuration = {
   entry: {
     main: resolvePath("../src/index"),
@@ -72,6 +73,14 @@ const config: Configuration = {
   plugins: [
     new DotEnv({
       path: resolvePath(`../env/.env.${currentEnv}`),
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        {
+          from: resolvePath("../public/static"),
+          to: resolvePath("../dist"),
+        },
+      ],
     }),
   ],
   cache: {
