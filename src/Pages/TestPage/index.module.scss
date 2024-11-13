@@ -1,7 +1,27 @@
-.test-page {
-  &-container {
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+.no-height-VL-container {
+  overflow: auto;
+  position: relative;
+  border: 1px solid black;
+  margin: auto;
+  width: 500px;
+
+  .phantom {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: -1;
+  }
+
+  .list {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    .item {
+      border: 1px solid rgb(255, 109, 109);
+      padding: 13px;
+    }
   }
 }
