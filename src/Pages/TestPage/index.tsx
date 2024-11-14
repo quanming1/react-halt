@@ -41,7 +41,7 @@ export default function TestPage() {
             width: 400,
           }}
           presetHeight={100}
-          list={getData(200)}
+          list={data}
         />
       )}
     </div>
