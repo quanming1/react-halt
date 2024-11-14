@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./index.module.scss";
 import NoHeightVL from "./NoHeightVL";
 import faker from "faker";
@@ -11,7 +12,7 @@ function getData(len: number) {
   for (let i = 0; i < len; i++) {
     data.push({
       index: i,
-      data: faker.lorem.sentences(getRand(40, 100)),
+      data: (i + "_").repeat(getRand(400, 1000)),
     });
   }
 
@@ -19,16 +20,30 @@ function getData(len: number) {
 }
 
 export default function TestPage() {
+  const [data, setData] = useState([]);
+  const [isShow, setIsShow] = useState(false);
   return (
     <div style={{ padding: "30px" }} className={styles["test-page-container"]}>
-      <NoHeightVL
-        style={{
-          height: "600px",
-          width: 400,
+      <button
+        onClick={() => {
+          setData(getData(1000));
         }}
-        presetHeight={500}
-        list={getData(200)}
-      />
+      >
+        生成数据
+      </button>
+      <button disabled={!data.length} onClick={() => setIsShow(!isShow)}>
+        {data.length ? `渲染${data.length}条数据` : "无数据"}
+      </button>
+      {isShow && (
+        <NoHeightVL
+          style={{
+            height: "600px",
+            width: 400,
+          }}
+          presetHeight={100}
+          list={getData(200)}
+        />
+      )}
     </div>
   );
 }
