@@ -3,7 +3,7 @@ import { getRand } from "./VL";
 
 const arr = Array(1000)
   .fill(1)
-  .map(() => getRand(100, 800));
+  .map(() => getRand(1000, 2000));
 
 const Demo = () => {
   return (

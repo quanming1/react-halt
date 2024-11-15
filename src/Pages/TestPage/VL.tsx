@@ -40,6 +40,7 @@ export default function TestPage() {
             height: "600px",
             width: 400,
           }}
+          bufferSize={89}
           presetHeight={500}
           list={data}
         />

@@ -49,7 +49,7 @@ export default function NoHeightVL({
     state.phantomHeight = state.cacheItems[state.cacheItems.length - 1].bottom;
 
     const startOffset = state.startIndex >= 1 ? state.cacheItems[state.startIndex - 1].bottom : 0;
-    listRef.current.style.transform = `translate3d(0,${startOffset}px,0)`;
+    listRef.current.style.transform = `translate3d(0,${startOffset ? startOffset : 0}px,0)`;
   };
   const updateCacheItems = () => {
     const nodes = [...document.querySelectorAll("." + styles["item"])] as HTMLDivElement[];
@@ -89,7 +89,7 @@ export default function NoHeightVL({
       }, 0);
     } else {
       state.endIndex = state.startIndex + getVisibleCount() + bufferSize;
-      bufferSize = 10;
+      bufferSize = 100;
     }
   }, [presetHeight]);
 

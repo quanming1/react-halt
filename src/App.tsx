@@ -5,8 +5,8 @@ import { RouterProvider } from "react-router";
 import router from "./Router";
 import { useEffect } from "react";
 
-import ResizeObserver from "resize-observer-polyfill";
-window.ResizeObserver = ResizeObserver;
+// import ResizeObserver from "resize-observer-polyfill";
+// window.ResizeObserver = ResizeObserver;
 
 export default function App() {
   useEffect(() => {

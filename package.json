@@ -65,6 +65,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "@virtuoso.dev/message-list": "^1.9.8",
     "ahooks": "^3.8.1",
     "antd": "^5.12.1",
     "autoprefixer": "^10.4.17",
