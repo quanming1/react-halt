@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef } from "react";
+import React, { useEffect, useLayoutEffect, useMemo, useRef } from "react";
 import styles from "./index.module.scss";
 import { useReactive } from "ahooks";
 
@@ -8,6 +8,10 @@ interface NoHeightVLProps {
   bufferSize?: number;
   style?: React.CSSProperties;
 }
+
+const config = {
+  showBottom: true,
+} as const;
 
 export default function NoHeightVL({
   style = {},
@@ -67,8 +71,7 @@ export default function NoHeightVL({
       }
     });
   };
-  useEffect(() => {
-    state.endIndex = state.startIndex + getVisibleCount();
+  useLayoutEffect(() => {
     state.cacheItems = list.map((_, index) => ({
       index,
       top: index * presetHeight,
@@ -77,6 +80,17 @@ export default function NoHeightVL({
     }));
 
     state.phantomHeight = state.cacheItems[state.cacheItems.length - 1].bottom;
+
+    if (config.showBottom) {
+      setTimeout(() => {
+        containerRef.current.scrollTop = list.length * presetHeight;
+        state.startIndex = list.length - getVisibleCount() - bufferSize;
+        state.endIndex = state.startIndex + getVisibleCount() + bufferSize;
+      }, 0);
+    } else {
+      state.endIndex = state.startIndex + getVisibleCount() + bufferSize;
+      bufferSize = 10;
+    }
   }, [presetHeight]);
 
   return (
