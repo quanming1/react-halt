@@ -48,13 +48,13 @@ const Demo = () => {
     listRef.current?.scrollToRow(rows.length - 1, VirtualListAlign.end);
     setTimeout(() => {
       // @ts-ignore
-      (window.njkdnf as HTMLElement).scrollTo({ top: 921e21 });
+      (window.wraper as HTMLElement).scrollTo({ top: 921e21 });
     }, 10);
   }, []);
 
   return (
     <div
-      id="njkdnf"
+      id="wraper"
       style={{
         height: 700,
         overflow: "auto",
@@ -64,7 +64,7 @@ const Demo = () => {
       }}
     >
       <VirtualList
-        className="snfnjkdnfg"
+        className="snfwraperg"
         ref={listRef}
         rows={rows}
         renderRow={renderRow}
