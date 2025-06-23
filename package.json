@@ -1,6 +1,6 @@
 {
   "name": "react-halt",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "react中实现组件的冻结",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

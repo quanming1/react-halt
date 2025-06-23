@@ -1,40 +1,60 @@
 import { Configuration } from "webpack";
 import path from "path";
-function resolve(dir: string) {
-  return path.resolve(__dirname, dir);
+
+function resolve(p: string): string {
+  return path.resolve(__dirname, p);
 }
 
-const config: Configuration = {
-  entry: "./src/index.ts",
+const webpackConfig: Configuration = {
+  mode: "production",
+  entry: resolve("./src/index.ts"),
   output: {
+    path: resolve("./dist"),
     filename: "index.js",
-    path: resolve("dist"),
+    library: "react-halt",
+    libraryTarget: "umd",
+    globalObject: "this",
     clean: true,
   },
-  externals: {
-    react: "React",
-    "react-dom": "ReactDOM",
-  },
   resolve: {
-    extensions: [".ts", ".tsx", ".js", ".jsx", "..."],
+    extensions: [".ts", ".tsx", ".js", ".jsx"],
+  },
+  externals: {
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "react",
+      root: "React",
+    },
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "react-dom",
+      root: "ReactDOM",
+    },
   },
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
+        test: /\.(ts|tsx)$/,
+        exclude: /node_modules/,
         use: [
           {
             loader: "babel-loader",
             options: {
-              presets: ["@babel/preset-env", "@babel/preset-react", "@babel/preset-typescript"],
+              presets: [["@babel/preset-env", { targets: "defaults" }], "@babel/preset-react", "@babel/preset-typescript"],
             },
           },
         ],
-        exclude: /node_modules/,
       },
     ],
   },
-  mode: "production",
+  cache: {
+    type: "filesystem",
+  },
+  optimization: {
+    minimize: true,
+  },
 };
 
-export default config;
+export default webpackConfig;
