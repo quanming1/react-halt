@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ReactStasis } from "react-stasis";
+import { ReactHalt } from "react-halt";
 
 // 模拟屏幕组件
 const Screen1 = () => {
@@ -58,24 +58,24 @@ export default function TestOfFreeze() {
       <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
         <input type="text" value={text} onChange={(e) => setText(e.target.value)} />
 
-        <ReactStasis stasis={activeScreen !== 1 && freezeInactive}>
+        <ReactHalt stasis={activeScreen !== 1 && freezeInactive}>
           <Screen1 />
-        </ReactStasis>
+        </ReactHalt>
 
-        <ReactStasis stasis={activeScreen !== 2 && freezeInactive}>
+        <ReactHalt stasis={activeScreen !== 2 && freezeInactive}>
           <Screen2 text={text} />
-        </ReactStasis>
+        </ReactHalt>
 
-        <ReactStasis stasis={activeScreen !== 3 && freezeInactive}>
+        <ReactHalt stasis={activeScreen !== 3 && freezeInactive}>
           <Screen3 />
-        </ReactStasis>
+        </ReactHalt>
       </div>
     );
   };
 
   return (
     <div style={{ maxWidth: 600, margin: "0 auto", fontFamily: "Arial" }}>
-      <h1>ReactPause 演示</h1>
+      <h1>ReactHalt 演示</h1>
 
       <div style={{ marginBottom: 20 }}>
         <label>
