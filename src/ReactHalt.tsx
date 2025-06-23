@@ -2,7 +2,7 @@ import React, { Suspense } from "react";
 
 const infiniteThenable = { then() {} };
 
-function Stasis({
+function Halt({
   stasis,
   children,
   onActivate,
@@ -22,7 +22,7 @@ function Stasis({
   return <>{children}</>;
 }
 
-export function ReactStasis({
+export function ReactHalt({
   stasis,
   children,
   onActivate,
@@ -35,9 +35,9 @@ export function ReactStasis({
 }) {
   return (
     <Suspense fallback={<></>}>
-      <Stasis stasis={stasis} onActivate={onActivate} onDeactivate={onDeactivate}>
+      <Halt stasis={stasis} onActivate={onActivate} onDeactivate={onDeactivate}>
         {children}
-      </Stasis>
+      </Halt>
     </Suspense>
   );
-}
+} 

@@ -1,7 +1,7 @@
 {
-  "name": "react-stasis",
+  "name": "react-halt",
   "version": "1.0.0",
-  "description": "react中实现组件的“冻结”",
+  "description": "react中实现组件的冻结",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

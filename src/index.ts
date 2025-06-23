@@ -1,1 +1,1 @@
-export { ReactStasis } from "./ReactStasis";
+export { ReactHalt } from "./ReactHalt";
