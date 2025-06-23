@@ -30,6 +30,11 @@
     "webpack": "^5.99.9",
     "webpack-cli": "^6.0.1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/quanming1/react-halt.git"
+  },
+  "homepage": "https://www.npmjs.com/package/react-halt",
   "devDependencies": {
     "@types/react": "^19.1.8"
   }
