@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useEffect } from "react";
 
 const infiniteThenable = { then() {} };
 
@@ -13,12 +13,18 @@ function Halt({
   onActivate?: () => void;
   onDeactivate?: () => void;
 }): React.ReactElement | null {
+  useEffect(() => {
+    if (stasis) {
+      onDeactivate?.();
+    } else {
+      onActivate?.();
+    }
+  }, [stasis]);
+
   if (stasis) {
-    onDeactivate?.();
     throw infiniteThenable;
   }
 
-  onActivate?.();
   return <>{children}</>;
 }
 
