@@ -40,4 +40,4 @@ export function ReactHalt({
       </Halt>
     </Suspense>
   );
-} 
+}

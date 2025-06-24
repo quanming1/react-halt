@@ -7,7 +7,7 @@ function resolve(p: string): string {
 
 const webpackConfig: Configuration = {
   mode: "production",
-  entry: resolve("./src/index.ts"),
+  entry: resolve("./src/index"),
   output: {
     path: resolve("./dist"),
     filename: "index.js",
@@ -53,8 +53,9 @@ const webpackConfig: Configuration = {
     type: "filesystem",
   },
   optimization: {
-    minimize: true,
+    minimize: false,
   },
+  devtool: "source-map",
 };
 
 export default webpackConfig;
